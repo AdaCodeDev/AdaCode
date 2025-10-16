@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;  
+}
+
+body {
+    
+    margin: 0 auto;
+    background-color: #ffffff; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.imgfundo {
+    position: relative;
+    height: 60%; 
+    width: 100%;
+    background-image: url('img/lovelaceblurcortada.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.cabecalhocontent {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 28px;
+    color:#ffffff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.texto {
+    font-size: 16px;
+    color: #f0f0f0;
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 0 20px;
+}
+
+.secaoform {
+    height: 60%; 
+    width: 100%;
+    padding: 0 30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.logocontainer {
+    margin-top: -30px;
+    margin-bottom: 15px;
+    width: 80px; 
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.cadastrotl {
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.cadastroform {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os inputs */
+}
+
+.cadastroform input {
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 25px; 
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    color: #333333;
+}
+
+.cadastroform input::placeholder {
+    color: rgba(51, 51, 51, 0.6);
+    font-weight: 400;
+}
+
+.botaoenter {
+    width: 100%;
+    height: 55px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    background: linear-gradient(90deg, #4A1A70 0%, #C4509F 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.botaoenter:active {
+    transform: scale(0.98);
+}
+
+.loginprompt {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.loginlink {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none; 
+}
