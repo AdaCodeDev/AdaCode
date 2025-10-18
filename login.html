@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    
+      
+   <div class="cabecalho">
+    <div class="imgfundo">
+            <div class="cabecalhocontent">
+                <h1 class="titulo">Bem Vindo de Volta</h1>
+                <p class="texto">Você pode entrar para acessar sua conta exixtente</p>
+            </div>
+        </div>
+    </div>
+
+           <div class="secaoform">
+            <div class="logocontainer">
+                <img src="img/AdaCode logo.png" alt="Logo Ada" class="logo">
+            </div>
+
+            <p class="logintl">Entrar</p>
+
+            <form class="loginform" action="login.php" method="post" >
+                <input type="text" name="nome" placeholder="Digite seu nome de usuáro" required>
+                <input type="password" name="senha" placeholder="Digite sua senha" required>
+                
+                <button type="submit" class="botaoenter">Entrar</button>
+            </form>
+
+            <p class="cadprompt">
+                Não tem conta? <a href="cadastro.html" class="cadlink">Crie uma</a>
+            </p>
+        </div>
+
 </body>
 </html>
