@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Curso</title>
+    <link rel="stylesheet" href="cadastro_curso.css">
+</head>
+<body>
+    <div class="screen-container">
+        
+        <header class="navbar">
+            <div class="logo-text">
+                <img src="img/AdaCode logo.png" alt="A" class="logo-icon">AdaCode
+            </div>
+            <button class="menu-toggle" aria-label="Menu">
+                &#9776; </button>
+        </header>
+
+        <main class="main-content">
+            
+            <div class="header-image-wrapper">
+                <img src="img/lovelacecortada.jpg" alt="Imagem de cabeçalho" class="header-image">
+            </div>
+
+            <div class="form-wrapper">
+                <h1 class="page-title">Cadastro de Curso</h1>
+
+                <form class="course-form" action="cadastra_curso.php" method="post" enctype="multipart/form-data">
+                    
+                    <input type="text" name="titulo" placeholder="Título" required>
+                    
+                    <textarea name="descricao" placeholder="Descrição" rows="4" required></textarea>
+                    
+                    <input type="text" name="plataforma" placeholder="Plataforma">
+                    <input type="text" name="nivel" placeholder="Nível">
+                    <input type="text" name="area" placeholder="Área">
+                    <input type="number" name="preco" placeholder="Preço(R$)" step="0.01">
+                    <input type="text" name="cargaHoraria" placeholder="Carga horária">
+                    
+                    <input type="text" name="certificado" placeholder="Emite certificado?">
+
+                    <div class="upload-area">
+                        <label for="capa_upload">Upload de Imagem de capa</label>
+                        <input type="file" id="capa_upload" name="urlimg" accept="image/*" style="display:none;">
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Cadastrar</button>
+
+                </form>
+            </div>
+        </main>
+        
+        <footer class="site-footer">
+            <a href="#"><span class="icon">&#9993;</span> E-mail</a>
+            <a href="#"><span class="icon">&#128247;</span> Instagram</a>
+            <a href="#"><span class="icon">&#128100;</span> LinkedIn</a>
+            <a href="#"><span class="icon">&#9999;</span> Feedback</a>
+            <a href="#"><span class="icon">&#9432;</span> Dúvidas Frequentes</a>
+        </footer>
+    </div>
+</body>
+</html>
