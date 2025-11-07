@@ -1,115 +1,200 @@
-/*
-  Dimensões de Referência: 393px (largura) x 873px (altura)
-  O Scroll será habilitado no body/container principal.
-*/
-
-:root {
-    --primary-color: #4A1A70; /* Roxo escuro */
-    --secondary-color: #C4509F; /* Rosa */
-    --text-color-dark: #333;
-    --text-color-light: #fff;
-    --input-bg-color: #ffffff;
-    --footer-bg-color: #333; /* Fundo escuro do rodapé */
+/*-------- VARIÁVEIS ---------*/
+:root{
+    --cor-letra-h2: #9D5383;
+    --cor-rodapé: #283F57;
+    --cor-texto-e-btn: #82578A;
 }
 
+/*-------- CONFIG. PADRÃO  ---------*/
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    margin:0;
 }
 
-/* 1. Container Principal (Permite a rolagem) */
-body {
-    width: 393px;
-    height: 873px; /* Altura padrão para fins de visualização */
-    margin: 0 auto;
-    background-color: #ffffff;
-    
-    /* Permite rolagem dentro do container principal */
-    overflow-y: auto; 
-    
+body{
+    font-family:'Inter', sans-serif;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.screen-container {
-    width: 100%;
-    /* Removido altura fixa para permitir que o conteúdo se expanda e role */
-}
-
-/* 2. Navbar Superior */
-.navbar {
-    width: 100%;
-    height: 50px;
-    padding: 0 15px;
+/*-------- NAVBAR ---------*/
+.navbar{
+    width:100%;
+    height: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff; /* Fundo branco para a barra */
-    position: sticky; /* Sticky para mantê-lo no topo se você tivesse outros elementos acima */
-    top: 0;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
 }
 
-.logo-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
+.lado-esquerdo img{
+    width: 120px;
+    height: auto;
+    display:block;
+    margin-top: 10px;
 }
 
-.logo-icon {
-    width: 25px; /* Tamanho da imagem do logo 'A' */
-    height: 25px;
-    margin-right: 5px;
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: var(--primary-color);
+.menu-botao {
+    font-size: 1.2em;
+    background-color: transparent;
     cursor: pointer;
+    color: var(--cor-texto-e-btn);
+    padding: 15px;
+    border: none;
+    outline: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 3. Área Principal do Conteúdo (Scrollable) */
-.main-content {
-    flex-grow: 1;
-    padding-bottom: 20px; /* Espaço antes do footer */
+.menu-botao:active{
+    background-color: rgba(130, 87, 138, 0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);   
+    border-radius: 15px;   
 }
 
-.header-image-wrapper {
+/*-------- MENU ---------*/
+.menu-lateral {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 180px;
+    background-color: #fff;
+    color: #1E1E1E;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 40px 20px 20px 20px;
+    z-index: 999;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-lateral.active { 
+    transform: translateX(0);
+    display: flex;
+}
+
+.menu-lateral .close-btn{
+    position:absolute;
+    top:10px;
+    right: 10px;
+    background-color: #fff;
+    color: var(--cor-texto-e-btn);
+    border: 2px solid var(--cor-texto-e-btn);
+    border-radius: 20%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s ease, box-shadow 0.2s ease;
+}
+
+.menu-lateral .close-btn:active {
+    background-color: #9D5383;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.menu-lateral nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
     width: 100%;
-    max-height: 180px; /* Altura da imagem de topo */
-    overflow: hidden;
-    position: relative;
+    gap:5px;
 }
 
-.header-image {
-    width: 100%;
+.menu-lateral nav ul li a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-weight: 600;
+}
+
+.menu-lateral nav ul li a.cadastrar {
+    color: var(--cor-texto-e-btn); 
+    font-weight: 700;
+}
+
+.menu-lateral .botao-entrar{
+    background: linear-gradient(135deg, #9D5383, #283F57);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 40%;
+    font-weight: 500;
+    transition: background-color 0.1s ease, box-shadow 0.2s ease;
+}
+
+.menu-lateral .botao-entrar:active {
+    opacity: 0.85;                 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#menu-logado{
+    height: 280px;
+}
+
+#menu-deslogado{
+    height: 230px;
+}
+
+#menu-logado .perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #787878;
+}
+
+#menu-logado .perfil i {
+    font-size: 2.5em;
+    color: #787878;
+    margin-bottom: 5px;
+}
+
+#menu-logado .perfil span {
+    word-break: break-all;
+    text-align: center;
+}
+
+
+/* ----MENU PRINCIPAL----- */
+.conteudo-principal{
+    flex: 1;
+    padding-top: 45px;
+}
+
+.foto-ada img{
+    max-width: 100%;
+    height: auto;
     display: block;
 }
 
-.form-wrapper {
-    padding: 20px 30px;
-    background-color: #f7f7f7; /* Um fundo levemente cinza para a seção, se necessário */
+.forms{
+    padding: 16px;
+    background-color: #f7f7f7; 
 }
 
-.page-title {
+.titulo-pagina {
     font-size: 24px;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 25px;
+    color: var(--cor-texto-e-btn);
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
 }
 
-/* 4. Estilo do Formulário */
 .course-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .course-form input[type="text"],
@@ -127,43 +212,42 @@ body {
     resize: none; /* Impede que o usuário redimensione a área de texto */
 }
 
+.descricao{
+    font-family: 'Inter', sans-serif;
+    color:#888;
+}
 .course-form input::placeholder,
 .course-form textarea::placeholder {
     color: #888;
 }
 
 .upload-area {
-    height: 120px; /* Altura da caixa de upload */
+    height: 120px; 
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 15px;
     background-color: #fff;
-    color: #888;
-    cursor: pointer;
+    color: #a9a9a9;
+    font-family: 'Inter', sans-serif;
     text-align: center;
-}
-
-.upload-area label {
-    display: block;
-    cursor: pointer;
 }
 
 .submit-button {
     width: 100%;
-    height: 55px;
+    height: 40px;
     margin-top: 15px;
+    margin-bottom: 10px;
     border: none;
-    border-radius: 27px;
+    border-radius: 15px;
     font-size: 18px;
-    font-weight: bold;
-    color: var(--text-color-light);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
     cursor: pointer;
-    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: #fff;
+    background: linear-gradient(to right,#283F57, #82578A,#9D5383,#E190A6);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
@@ -172,30 +256,20 @@ body {
     transform: scale(0.98);
 }
 
-.site-footer {
+/*-------- RODAPÉ ---------*/
+
+.rodape {
     width: 100%;
-    padding: 20px 30px;
-    background-color: var(--footer-bg-color);
-    color: var(--text-color-light);
+    background-color: var(--cor-rodapé);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.rodape ul{
+    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-}
-
-.site-footer a {
-    color: var(--text-color-light);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.site-footer a:hover {
-    color: var(--secondary-color);
-}
-
-.site-footer .icon {
-    margin-right: 8px;
-    font-size: 16px;
+    gap: 5px;
 }
