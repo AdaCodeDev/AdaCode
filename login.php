@@ -25,7 +25,7 @@ if (!$user) {
 if (password_verify($senha, $user['senha'])) {
      $_SESSION['user_id'] = $user['id_user'];
     $_SESSION['nome_usuario'] = $user['username'];
-    header('location: home.html');
+    header('location: home.php');
     exit(); 
 } else {
     // --- ONDE ESTÁ A FALHA AGORA ---
