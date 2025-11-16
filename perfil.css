@@ -1,4 +1,3 @@
-
 /*-------- VARIÁVEIS ---------*/
 :root{
     --cor-letra-h2: #9D5383;
@@ -166,80 +165,115 @@ body{
     text-align: center;
 }
 
-
-/*-------- MAIN ---------*/
 .conteudo-principal {
-    padding-top: 45px;
+    padding-top: 48px;
     flex:1;
+    padding-bottom: 90px;
 }
 
-.foto-ada img{
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-.ada-code, .historia {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    align-items: stretch;
-}
-
-.historia{
-    flex-direction: row-reverse;
-}
-
-h2 {
-    color: var(--cor-letra-h2);
-    font-size: 26px;
-    margin-bottom: 5px;
-}
-
-.texto{
-    flex:1;
-    
-    width: 100%;
-    height: auto;
-}
-
-.imgs {
-    flex: 0 0 40%;
-    display:flex;
-}
-
-.imgs img{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display:block;
-}
-
-.ada-code .imgs img,
-.historia .imgs img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*-------- RODAPÉ ---------*/
-
-.rodape {
-    width: 100%;
-    background-color: var(--cor-rodapé);
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.rodape ul{
-    list-style: none;
+.cabecalho-perfil {
+    position: relative;
+    height: 180px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/imgceucortada.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.info-perfil {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-bottom: 0px;
+    margin-bottom: -30px;
+}
+
+.profile-image {
+   
+width: 100px; 
+ height: 100px;
+ border-radius: 50%; 
+ border: 4px solid white; 
+ object-fit: cover; 
+ margin: 0 auto 5px auto; 
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+}
+
+.username {
+font-size: 1.2em;
+ font-weight: 600;
+ color: white;
+ margin-top: 2px;
+}
+
+.secoes-perfil {
+    padding: 0 20px;
+    flex-grow: 1; 
+}
+
+.titulo-secao {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--cor-rodapé); 
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.conteudo-secao {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.lista-cursos-salvos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.curso-salvo-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.curso-thumbnail {
+    width: 80px;
+    height: 80px;
+    background-color: #eee; 
+    border-radius: 4px;
+    flex-shrink: 0; 
+}
+
+.curso-texto {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.botao-carregar {
+    width: 100%;
+    background-color: var(--cor-rodapé); 
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 0;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
 }

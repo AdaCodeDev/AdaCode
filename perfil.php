@@ -5,15 +5,14 @@ $estaLogado = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - AdaCode</title>
-    <link rel="stylesheet" href="home.css">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -43,10 +42,10 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="home.php">Início</a></li>
-                        <li><a href="forum.php">Fórum</a></li>
-                        <li><a href="cursosgeral.php">Cursos</a></li>
-                        <li><a href="eventos.php">Eventos</a></li>
+                       <li><a href="conta.php">Conta</a></li>
+                        <li><a href="editar.php">Editar Perfil</a></li>
+                        <li><a href="minhas_publicacoes.php">Minhas Publicações</a></li>
+
                     </ul>
                 </nav>
                 <button class="botao-entrar" onclick="window.location.href='logout.php'">Sair</button>
@@ -72,49 +71,50 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
         </aside>
     <?php endif; ?>
 
-    <main class="conteudo-principal">
-        <div class="foto-ada">
-            <img src="img/AdaCortada.png" alt="Foto Ada Lovelace">
+     <main class="conteudo-principal">
+
+        <div class="cabecalho-perfil">
+            <div class="background-img"></div>
+
+            <div class="info-perfil">
+                <img src="img/user.png" alt="Foto de Perfil" class="profile-image">
+                <h1 class="username"><?php echo $nomeUsuario; ?></h1>
+            </div>
         </div>
 
-        <section class="ada-code">
-            <div class="imgs">
-                <img id="pintura-img" src="img/pintura.png" alt="Imagem de uma Pintura">
+        <section class="secoes-perfil">
+            
+            <h2 class="titulo-secao">Cursos salvos</h2>
+            
+            <div class="lista-cursos-salvos">
+                
+                <div class="curso-salvo-card">
+                    <div class="curso-thumbnail"></div>
+                    <p class="curso-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales aliquam ultrices.</p>
+                </div>
+                
+                <div class="curso-salvo-card">
+                    <div class="curso-thumbnail"></div>
+                    <p class="curso-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales aliquam ultrices.</p>
+                </div>
+                
+                <div class="curso-salvo-card">
+                    <div class="curso-thumbnail"></div>
+                    <p class="curso-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales aliquam ultrices.</p>
+                </div>
+                <div class="curso-salvo-card">
+                    <div class="curso-thumbnail"></div>
+                    <p class="curso-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales aliquam ultrices.</p>
+                </div>
+                
             </div>
-            <div class="texto">
-                <h2>AdaCode</h2>
-                <p>
-                    O projeto AdaCode nasceu a partir da análise do cenário atual do setor de tecnologia, onde é evidente a baixa representatividade feminina, especialmente em cargos de liderança e gestão. Como contribuição, o projeto propõe a criação de um repositório online gratuito e curado com cursos, eventos, textos e vídeos introdutórios sobre tecnologia
-                </p>
-            </div>
+            
+            <button class="botao-carregar">Carregar mais</button>
+            
         </section>
-        <section class="historia">
-            <div class="imgs">
-                <img id="mar-img" src="img/mar.png" alt="Quadro retratando um mar">
-            </div>
-            <div class="texto">
-                <h2>História</h2>
-                <p>
-                    Ada Lovelace, filha do poeta Lord Byron, foi a primeira programadora da história. No século XIX, ela previu que máquinas poderiam ir além dos cálculos matemáticos, imaginando música e arte geradas por algoritmos. Sua visão abriu caminho para mulheres na tecnologia, que, apesar de desafios, continuam moldando o futuro digital.
-                </p>
-            </div>
-        </section>
-    </main>
+ </main>
+ 
 
-    <footer class="rodape">
-        <ul>
-            <li><i class="fas fa-envelope"></i> E-mail</li>
-            <a href="https://www.instagram.com/projeto.adacode?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
-                <li><i class="bi bi-instagram"></i></i> Instagram</li>
-            </a>
-            <li><i class="fab fa-linkedin"></i> LinkedIn</li>
-            <li><i class="bi bi-chat-left"></i></i> Feedback</li>
-            <li><i class="bi bi-exclamation-circle"></i></i> Dúvidas Frequentes</li>
-        </ul>
-    </footer>
-
-    <script src="menu.js"></script>
-
-</body>
-
+ <script src="menu.js"></script>
+ </body>
 </html>

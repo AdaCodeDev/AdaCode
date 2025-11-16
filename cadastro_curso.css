@@ -1,18 +1,18 @@
 /*-------- VARIÁVEIS ---------*/
-:root{
+:root {
     --cor-letra-h2: #9D5383;
     --cor-rodapé: #283F57;
     --cor-texto-e-btn: #82578A;
 }
 
-/*-------- CONFIG. PADRÃO  ---------*/
+/*-------- CONFIG. PADRÃO  ---------*/
 * {
     box-sizing: border-box;
-    margin:0;
+    margin: 0;
 }
 
-body{
-    font-family:'Inter', sans-serif;
+body {
+    font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -20,8 +20,8 @@ body{
 }
 
 /*-------- NAVBAR ---------*/
-.navbar{
-    width:100%;
+.navbar {
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: space-between;
@@ -34,10 +34,10 @@ body{
     border-end-end-radius: 10px;
 }
 
-.lado-esquerdo img{
+.lado-esquerdo img {
     width: 120px;
     height: auto;
-    display:block;
+    display: block;
     margin-top: 10px;
 }
 
@@ -52,10 +52,10 @@ body{
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.menu-botao:active{
+.menu-botao:active {
     background-color: rgba(130, 87, 138, 0.3);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);   
-    border-radius: 15px;   
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
 }
 
 /*-------- MENU ---------*/
@@ -75,14 +75,14 @@ body{
     transition: transform 0.3s ease-in-out;
 }
 
-.menu-lateral.active { 
+.menu-lateral.active {
     transform: translateX(0);
     display: flex;
 }
 
-.menu-lateral .close-btn{
-    position:absolute;
-    top:10px;
+.menu-lateral .close-btn {
+    position: absolute;
+    top: 10px;
     right: 10px;
     background-color: #fff;
     color: var(--cor-texto-e-btn);
@@ -99,7 +99,7 @@ body{
 .menu-lateral .close-btn:active {
     background-color: #9D5383;
     color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .menu-lateral nav ul {
@@ -109,7 +109,7 @@ body{
     padding: 0;
     margin: 10px 0;
     width: 100%;
-    gap:5px;
+    gap: 5px;
 }
 
 .menu-lateral nav ul li a {
@@ -119,11 +119,11 @@ body{
 }
 
 .menu-lateral nav ul li a.cadastrar {
-    color: var(--cor-texto-e-btn); 
+    color: var(--cor-texto-e-btn);
     font-weight: 700;
 }
 
-.menu-lateral .botao-entrar{
+.menu-lateral .botao-entrar {
     background: linear-gradient(135deg, #9D5383, #283F57);
     color: #fff;
     border: none;
@@ -134,19 +134,19 @@ body{
 }
 
 .menu-lateral .botao-entrar:active {
-    opacity: 0.85;                 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    opacity: 0.85;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-#menu-logado{
+#menu-logado {
     height: 280px;
 }
 
-#menu-deslogado{
+#menu-deslogado {
     height: 230px;
 }
 
-#menu-logado .perfil{
+#menu-logado .perfil {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,20 +167,20 @@ body{
 
 
 /* ----MENU PRINCIPAL----- */
-.conteudo-principal{
+.conteudo-principal {
     flex: 1;
     padding-top: 45px;
 }
 
-.foto-ada img{
+.foto-ada img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-.forms{
+.forms {
     padding: 16px;
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }
 
 .titulo-pagina {
@@ -209,20 +209,108 @@ body{
 }
 
 .course-form textarea {
-    resize: none; /* Impede que o usuário redimensione a área de texto */
+    resize: none;
 }
 
-.descricao{
+.descricao {
     font-family: 'Inter', sans-serif;
-    color:#888;
+    color: #888;
 }
+
 .course-form input::placeholder,
 .course-form textarea::placeholder {
     color: #888;
 }
 
+.course-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #888;
+    background-color: #fff;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23888" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.course-form select:not([multiple]):focus,
+.course-form select:not([multiple]):valid {
+    color: var(--cor-rodapé);
+}
+
+.area-selection-container {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.selection-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--cor-rodapé);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.area-options-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.area-checkbox {
+    display: none;
+}
+
+.area-label {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2
+}
+
+.custom-checkbox-ball {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 8px;
+    background-color: #fff;
+    transition: border-color 0.2s, background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.area-checkbox:checked+.area-label {
+    background-color: var(--cor-texto-e-btn);
+    border-color: var(--cor-texto-e-btn);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.area-checkbox:checked+.area-label .custom-checkbox-ball {
+    background-color: #fff;
+    border-color: #fff;
+    box-shadow: inset 0 0 0 4px var(--cor-texto-e-btn);
+}
+
+.area-label:hover {
+    background-color: #e5e5e5;
+}
+
+.area-checkbox:checked+.area-label:hover {
+    background-color: var(--cor-texto-e-btn);
+    opacity: 0.9;
+}
+
 .upload-area {
-    height: 120px; 
+    height: 120px;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -247,7 +335,7 @@ body{
     font-family: 'Inter', sans-serif;
     cursor: pointer;
     color: #fff;
-    background: linear-gradient(to right,#283F57, #82578A,#9D5383,#E190A6);
+    background: linear-gradient(to right, #283F57, #82578A, #9D5383, #E190A6);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
@@ -267,7 +355,7 @@ body{
     justify-content: center;
 }
 
-.rodape ul{
+.rodape ul {
     list-style: none;
     display: flex;
     flex-direction: column;

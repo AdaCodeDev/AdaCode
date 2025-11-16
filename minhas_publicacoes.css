@@ -1,5 +1,3 @@
-
-/*-------- VARIÁVEIS ---------*/
 :root{
     --cor-letra-h2: #9D5383;
     --cor-rodapé: #283F57;
@@ -18,6 +16,7 @@ body{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
 /*-------- NAVBAR ---------*/
@@ -74,6 +73,7 @@ body{
     z-index: 999;
     border-radius: 15px;
     transition: transform 0.3s ease-in-out;
+    
 }
 
 .menu-lateral.active { 
@@ -166,80 +166,177 @@ body{
     text-align: center;
 }
 
-
 /*-------- MAIN ---------*/
+
 .conteudo-principal {
     padding-top: 45px;
     flex:1;
 }
 
-.foto-ada img{
+.imagem-principal img {
+    width: 100%;
+}
+
+.pinturadeitada {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-.ada-code, .historia {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    align-items: stretch;
-}
-
-.historia{
-    flex-direction: row-reverse;
-}
-
-h2 {
-    color: var(--cor-letra-h2);
-    font-size: 26px;
-    margin-bottom: 5px;
-}
-
-.texto{
-    flex:1;
-    
-    width: 100%;
-    height: auto;
-}
-
-.imgs {
-    flex: 0 0 40%;
-    display:flex;
-}
-
-.imgs img{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display:block;
-}
-
-.ada-code .imgs img,
-.historia .imgs img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*-------- RODAPÉ ---------*/
-
-.rodape {
-    width: 100%;
-    background-color: var(--cor-rodapé);
+.titulo-pagina {
+    position: absolute;   
+    top: 100px;
+    left: 20px;           
     color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    
 }
 
-.rodape ul{
-    list-style: none;
+#titulo{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#descricao-titulo{
+    font-size: 15px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* --- SEÇÃO PRINCIPAL DE PUBLICAÇÕES --- */
+.area-publicacoes {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.titulo-secao {
+    font-size: 1.5em;
+    color: #6a0dad; 
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.botao-nova-publicacao {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #6a0dad, #9c4dcc); /* Gradiente roxo */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.botao-nova-publicacao:hover {
+    opacity: 0.9;
+}
+
+.botao-nova-publicacao i {
+    margin-right: 10px;
+}
+
+/* --- ESTILO DO POST CARD (Reutilizado do forum.css) --- */
+.post-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+}
+
+.cabecalho-do-post {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.lado-esquerdo-post {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-icone {
+    font-size: 2em;
+    color: #aaa;
+    margin-right: 10px;
+}
+
+.nome-usuario {
+    font-weight: 600;
+    color: #333;
+}
+
+.icones-do-post a,
+.icones-do-post i {
+    color: #888;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Ícones de Ação específicos para "Minhas Publicações" */
+.icones-do-post a:hover .fa-edit {
+    color: #4CAF50; /* Verde para Editar */
+}
+
+.icones-do-post a:hover .fa-trash-alt {
+    color: #f44336; /* Vermelho para Excluir */
+}
+
+.titulo-post {
+    font-size: 1.1em;
+    margin: 0 0 10px 0;
+    color: #6a0dad;
+}
+
+.post-conteudo p {
+    line-height: 1.6;
+    color: #555;
+    
+}
+
+.midia-placeholder {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.bloco-midia-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-posts {
+    text-align: center;
+    padding: 40px;
+    color: #777;
+    border: 1px dashed #ccc;
+}
+
+/* --- MEDIA QUERIES (Para telas menores) --- */
+@media (max-width: 600px) {
+    .area-publicacoes {
+        padding: 10px;
+    }
+    .texto-header h1 {
+        font-size: 1.8em;
+    }
+    .texto-header p {
+        font-size: 0.9em;
+    }
+    .icones-do-post a,
+    .icones-do-post i {
+        margin-left: 10px;
+    }
 }

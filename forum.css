@@ -204,6 +204,27 @@ body{
     font-weight: 500;
 }
 
+.botao-nova-publicacao {
+    background: linear-gradient(135deg, #9D5383, #82578A); 
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none; 
+    font-weight: 600;
+    font-size: 0.9em;
+    white-space: nowrap; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.2s;
+}
+
+.botao-nova-publicacao:hover {
+    opacity: 0.9;
+}
+
+.botao-nova-publicacao i {
+    margin-right: 5px;
+}
+
 .bemvindo-busca{
     display: flex;
     justify-content: space-between;
@@ -211,33 +232,7 @@ body{
     font-size: 16px;
     font-weight: 600;
     padding: 15px;
-    gap: 20px;
-}
-
-.barra-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #000;
-    border-radius: 25px;
-    padding: 1px 8px;
-    background-color: #fff;
-}
-
-.barra-pesquisa input {
-    border: none;
-    outline: none;
-    padding: 3px 5px;
-    width: 130px;
-    font-size: 0.9em;
-}
-
-.barra-pesquisa button {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    font-size: 0.8em;
-    padding: 1px;
+    gap: 20px; 
 }
 
 .post-card {
@@ -265,12 +260,68 @@ body{
     gap: 8px; 
 }
 
+.avatar-icone {
+    font-size: 24px; 
+    color: #787878; 
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .avatar {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #ccc; 
     object-fit: cover;
+}
+
+.midia-placeholder {
+    display: flex;       
+    gap: 10px;           
+    margin-top: 10px;    
+    flex-wrap: wrap; 
+}
+
+.bloco-midia-img {
+    flex: 1; 
+    min-width: 150px; 
+    max-width: 100%;
+    height: auto;
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    background-color: #ddd; 
+}
+
+.bloco-midia {
+    flex: 1; 
+    height: 150px; 
+    background-color: #ddd;
+    border-radius: 8px; 
+}
+
+.titulo-pagina {
+    position: absolute;  
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.imagem-principal {
+    position: relative;
+    width: 100%;
+    filter: brightness(0.7); 
+}
+
+.introducao {
+    position: relative;
+    width: 100%;
+    overflow: hidden; 
 }
 
 .lado-esquerdo-post .nome-usuario {

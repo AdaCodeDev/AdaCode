@@ -1,4 +1,5 @@
 <?php
+include 'conexao.php'; 
 session_start(); 
 
 $estaLogado = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
@@ -7,7 +8,7 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +19,9 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-     <header class="navbar">
+    <header class="navbar">
         <div class="lado-esquerdo">
-            <img src="img/logotopo.png" alt="AdaCode Logo">
+            <a href="home.php"><img src="img/logotopo.png" alt="AdaCode Logo"></a>
         </div>
         <div class="lado-direito">
             <button id="botao-menu" class="menu-botao"> 
@@ -36,7 +37,7 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
                 <i class="fas fa-times"></i>
             </button>
             <div class="perfil">
-                <i class="bi bi-person-circle"></i>
+                <a href="perfil.php"><i class="bi bi-person-circle"></i></a>
                 <span><?php echo $nomeUsuario; ?></span>
             </div>
             <nav>
@@ -70,37 +71,45 @@ $nomeUsuario = $estaLogado ? htmlspecialchars($_SESSION['nome_usuario']) : '';
     </aside>
     <?php endif; ?>
 
-     
     <main class="conteudo-principal">
         <section class="introducao">
             <div class="imagem-principal">
                 <img class="pinturadeitada" src="img/pinturadeitada.png" alt="Pintura">
                 <div class="titulo-pagina">
                     <h2 id="titulo">Cursos</h2>
-                    <h3 id="descricao-titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Maecenas  sodales aliquam ultrices. Curabitur arcu turpis, fermentum id convallis  et, laoreet eget dolor.
+                    <h3 id="descricao-titulo"> Cursos na Área de Tecnologia da Informação, desde Lógica de Programação à cursos gratuitos de Python, Java, entre outros
                     </h3>
                 </div>
             </div>
         </section>
         
         <section class="filtros">
-        <button class="filtro-botao">
-            Faixa de preço <i class="fas fa-chevron-down"></i>
-        </button>
-        <button class="filtro-botao">
-            Dificuldade <i class="fas fa-chevron-down"></i>
-        </button>
-        <button class="filtro-botao filtro-principal">
-            Filtro <i class="fas fa-filter"></i>
-        </button>
+            <button class="filtro-botao">
+                Faixa de preço <i class="fas fa-chevron-down"></i>
+            </button>
+            <button class="filtro-botao">
+                Dificuldade <i class="fas fa-chevron-down"></i>
+            </button>
+            <button class="filtro-botao filtro-principal">
+                Filtro <i class="fas fa-filter"></i>
+            </button>
         </section>
 
         <section class="listagem-cursos">
 <?php
-include 'conexao.php'; 
 
-$select = "SELECT id_curso, nm_curso, ds_curso, url_img, vl_curso FROM tb_curso ORDER BY nm_curso ASC";
+// ---  CONSULTA COM JOIN PARA O NÍVEL ---
+$select = "
+    SELECT 
+        C.id_curso, C.nm_curso, C.ds_curso, C.url_img, C.vl_curso,
+        N.nm_nivel  -- Nome do Nível
+    FROM 
+        tb_curso C
+    INNER JOIN 
+        tb_nivel N ON C.fk_id_nivel = N.id_nivel
+    ORDER BY 
+        C.nm_curso ASC
+";
 $resultado = $conexao->query($select);
 
 if ($resultado && $resultado->num_rows > 0) {
@@ -109,30 +118,62 @@ if ($resultado && $resultado->num_rows > 0) {
         $id_curso = $curso['id_curso'];
         $titulo_curso = htmlspecialchars($curso['nm_curso']);
         $descricao_curso = htmlspecialchars($curso['ds_curso']);
-        $imagem_url = htmlspecialchars($curso['url_img']);
-        $preco_formatado = 'R$ ' . number_format($curso['vl_curso'], 2, ',', '.'); 
+        $imagem_url = 'img/' . htmlspecialchars($curso['url_img']); 
+        $preco_formatado = ($curso['vl_curso'] == 0.00) ? 'Grátis' : 'R$ ' . number_format($curso['vl_curso'], 2, ',', '.'); 
+        $nivel_curso = htmlspecialchars($curso['nm_nivel']); 
+        
+        $areas_string = '';
+        $select_areas = "
+            SELECT 
+                A.nm_area
+            FROM 
+                tb_curso_area CA
+            INNER JOIN 
+                tb_area A ON CA.fk_id_area = A.id_area
+            WHERE
+                CA.fk_id_curso = ?
+            ORDER BY 
+                A.nm_area
+        ";
+        $prepare_areas = $conexao->prepare($select_areas);
+        if ($prepare_areas) {
+            $prepare_areas->bind_param('i', $id_curso);
+            $prepare_areas->execute();
+            $resultado_areas = $prepare_areas->get_result();
+            
+            $areas_array = [];
+            while ($area_data = $resultado_areas->fetch_assoc()) {
+                $areas_array[] = htmlspecialchars($area_data['nm_area']);
+            }
+            $prepare_areas->close();
+            $areas_string = !empty($areas_array) ? implode(', ', $areas_array) : 'N/A';
+        }
 
+
+        // ---  EXIBIÇÃO DO CARD ---
         echo <<<HTML
 <a href="cursoespecifico.php?id={$id_curso}" style="text-decoration: none; color: inherit;">
     <div class="card-curso">
         <div class="primeiro-curso">
             <img class="imagem-curso" src="{$imagem_url}" alt="Imagem do Curso: {$titulo_curso}">
+        </div>
+        <div class="conteudo-card">
+            <h4 class="titulo-card">{$titulo_curso}</h4>
+            <div class="info-inline">
+                <span class="nivel-card">Nível: <strong>{$nivel_curso}</strong></span>
+                <span class="preco-card">{$preco_formatado}</span>
             </div>
-    </div>
-</a>
-                <h4 class="titulo-card">{$titulo_curso}</h4>
-                <p class="preco-card">{$preco_formatado}</p>
-                
-                <p class="descricao-curso">
-                    {$descricao_curso}
-                </p>
-                
-                <div class="icones">
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-share-alt"></i>
-                </div>
+            <p class="area-card">Áreas: {$areas_string}</p>
+            <p class="descricao-curso">
+                {$descricao_curso}
+            </p>
+            <div class="icones">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
             </div>
         </div>
+    </div>
+</a>
 HTML;
     }
 } else {

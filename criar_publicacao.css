@@ -1,4 +1,3 @@
-
 /*-------- VARIÁVEIS ---------*/
 :root{
     --cor-letra-h2: #9D5383;
@@ -6,10 +5,11 @@
     --cor-texto-e-btn: #82578A;
 }
 
-/*-------- CONFIG. PADRÃO  ---------*/
+/*-------- CONFIG. PADRÃO ---------*/
 * {
     box-sizing: border-box;
     margin:0;
+    padding: 0;
 }
 
 body{
@@ -18,9 +18,10 @@ body{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
-/*-------- NAVBAR ---------*/
+/* --- NAVBAR --- */
 .navbar{
     width:100%;
     height: 48px;
@@ -166,67 +167,95 @@ body{
     text-align: center;
 }
 
-
 /*-------- MAIN ---------*/
 .conteudo-principal {
-    padding-top: 45px;
-    flex:1;
+    flex: 1;
+    padding-top: 60px; 
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.foto-ada img{
-    max-width: 100%;
-    height: auto;
-    display: block;
+
+.publicacao-container {
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
-.ada-code, .historia {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    align-items: stretch;
-}
-
-.historia{
-    flex-direction: row-reverse;
-}
-
-h2 {
+.publicacao-container h2 {
+    font-size: 24px;
     color: var(--cor-letra-h2);
-    font-size: 26px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.texto{
-    flex:1;
-    
+.formulario-publicacao {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.formulario-publicacao input[type="text"],
+.formulario-publicacao input[type="email"],
+.formulario-publicacao textarea {
     width: 100%;
-    height: auto;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
 }
 
-.imgs {
-    flex: 0 0 40%;
-    display:flex;
+.formulario-publicacao input[type="text"],
+.formulario-publicacao input[type="email"] {
+    height: 40px; 
 }
 
-.imgs img{
+.formulario-publicacao textarea {
+    resize: none; 
+    min-height: 150px;
+    padding-top: 15px;
+}
+
+.formulario-publicacao input::placeholder,
+.formulario-publicacao textarea::placeholder {
+    color: #999;
+}
+
+.upload-area {
+    height: 80px;
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    display:block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #fff;
+    color: #a9a9a9;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
-.ada-code .imgs img,
-.historia .imgs img {
-    width: 100%;
-    height: auto;
-    display: block;
+.botao-publicar {
+    background: linear-gradient(90deg, #283F57 0%, #82578A 50%, #9D5383 100%); 
+    color: #fff;
+    border: none;
+    border-radius: 8px; 
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/*-------- RODAPÉ ---------*/
+.botao-publicar:hover {
+    opacity: 0.9;
+}
+
+/* --- RODAPÉ --- */
 
 .rodape {
     width: 100%;

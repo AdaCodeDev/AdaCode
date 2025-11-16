@@ -93,7 +93,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço entre os inputs */
+    gap: 15px; 
 }
 
 .loginform input {
