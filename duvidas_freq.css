@@ -1,0 +1,256 @@
+/*-------- VARIÁVEIS ---------*/
+:root{
+    --cor-letra-h2: #9D5383;
+    --cor-rodapé: #283F57;
+    --cor-texto-e-btn: #82578A;
+}
+
+/*-------- CONFIG. PADRÃO  ---------*/
+* {
+    box-sizing: border-box;
+    margin:0;
+}
+
+body{
+    font-family:'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/*-------- NAVBAR ---------*/
+.navbar{
+    width:100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+}
+
+.lado-esquerdo img{
+    width: 120px;
+    height: auto;
+    display:block;
+    margin-top: 10px;
+}
+
+.menu-botao {
+    font-size: 1.2em;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--cor-texto-e-btn);
+    padding: 15px;
+    border: none;
+    outline: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-botao:active{
+    background-color: rgba(130, 87, 138, 0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);   
+    border-radius: 15px;   
+}
+
+/*-------- MENU ---------*/
+.menu-lateral {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 180px;
+    background-color: #fff;
+    color: #1E1E1E;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 40px 20px 20px 20px;
+    z-index: 999;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-lateral.active { 
+    transform: translateX(0);
+    display: flex;
+}
+
+.menu-lateral .close-btn{
+    position:absolute;
+    top:10px;
+    right: 10px;
+    background-color: #fff;
+    color: var(--cor-texto-e-btn);
+    border: 2px solid var(--cor-texto-e-btn);
+    border-radius: 20%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s ease, box-shadow 0.2s ease;
+}
+
+.menu-lateral .close-btn:active {
+    background-color: #9D5383;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.menu-lateral nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    width: 100%;
+    gap:5px;
+}
+
+.menu-lateral nav ul li a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-weight: 600;
+}
+
+.menu-lateral nav ul li a.cadastrar {
+    color: var(--cor-texto-e-btn); 
+    font-weight: 700;
+}
+
+.menu-lateral .botao-entrar{
+    background: linear-gradient(135deg, #9D5383, #283F57);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 40%;
+    font-weight: 500;
+    transition: background-color 0.1s ease, box-shadow 0.2s ease;
+}
+
+.menu-lateral .botao-entrar:active {
+    opacity: 0.85;                 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#menu-logado{
+    height: 280px;
+}
+
+#menu-deslogado{
+    height: 230px;
+}
+
+#menu-logado .perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #787878;
+}
+
+#menu-logado .perfil i {
+    font-size: 2.5em;
+    color: #787878;
+    margin-bottom: 5px;
+}
+
+#menu-logado .perfil span {
+    word-break: break-all;
+    text-align: center;
+}
+
+/*----- SEÇÃO DÚVIDAS -----*/
+
+.secao-duvidas {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.titulo-duvidas {
+    font-size: 24px;
+    color: #82578A;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.lista-duvidas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.duvida {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.pergunta {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 0;
+    color: #000000;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.seta {
+    transition: transform 0.3s;
+}
+
+.resposta {
+    display: none;
+    padding: 5px 0;
+    color: #333;
+    font-size: 0.95em;
+    line-height: 1.4em;
+}
+
+.duvida.ativa .resposta {
+    display: block;
+}
+
+.duvida.ativa .seta {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+/*-------- RODAPÉ ---------*/
+.rodape {
+    width: 100%;
+    background-color: var(--cor-rodapé);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+     margin-top: auto;
+}
+
+.rodape ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rodape ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

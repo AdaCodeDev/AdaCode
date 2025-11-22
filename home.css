@@ -243,3 +243,11 @@ h2 {
     flex-direction: column;
     gap: 5px;
 }
+
+.rodape ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
